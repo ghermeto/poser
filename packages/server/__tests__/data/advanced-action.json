@@ -1,0 +1,412 @@
+{
+    "element": "parseResult",
+    "content": [
+      {
+        "element": "category",
+        "meta": {
+          "classes": {
+            "element": "array",
+            "content": [
+              {
+                "element": "string",
+                "content": "api"
+              }
+            ]
+          },
+          "title": {
+            "element": "string",
+            "content": "Advanced Action API"
+          }
+        },
+        "attributes": {
+          "metadata": {
+            "element": "array",
+            "content": [
+              {
+                "element": "member",
+                "meta": {
+                  "classes": {
+                    "element": "array",
+                    "content": [
+                      {
+                        "element": "string",
+                        "content": "user"
+                      }
+                    ]
+                  }
+                },
+                "content": {
+                  "key": {
+                    "element": "string",
+                    "content": "FORMAT"
+                  },
+                  "value": {
+                    "element": "string",
+                    "content": "1A"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "content": [
+          {
+            "element": "copy",
+            "content": "A resource action is – in fact – a state transition. This API example\ndemonstrates an action - state transition - to another resource."
+          },
+          {
+            "element": "resource",
+            "meta": {
+              "title": {
+                "element": "string",
+                "content": "Tasks"
+              }
+            },
+            "attributes": {
+              "href": {
+                "element": "string",
+                "content": "/tasks/tasks{?status,priority}"
+              },
+              "hrefVariables": {
+                "element": "hrefVariables",
+                "content": [
+                  {
+                    "element": "member",
+                    "meta": {
+                      "title": {
+                        "element": "string",
+                        "content": "string"
+                      }
+                    },
+                    "attributes": {
+                      "typeAttributes": {
+                        "element": "array",
+                        "content": [
+                          {
+                            "element": "string",
+                            "content": "required"
+                          }
+                        ]
+                      }
+                    },
+                    "content": {
+                      "key": {
+                        "element": "string",
+                        "content": "status"
+                      },
+                      "value": {
+                        "element": "string"
+                      }
+                    }
+                  },
+                  {
+                    "element": "member",
+                    "meta": {
+                      "title": {
+                        "element": "string",
+                        "content": "number"
+                      }
+                    },
+                    "attributes": {
+                      "typeAttributes": {
+                        "element": "array",
+                        "content": [
+                          {
+                            "element": "string",
+                            "content": "required"
+                          }
+                        ]
+                      }
+                    },
+                    "content": {
+                      "key": {
+                        "element": "string",
+                        "content": "priority"
+                      },
+                      "value": {
+                        "element": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "content": [
+              {
+                "element": "transition",
+                "meta": {
+                  "title": {
+                    "element": "string",
+                    "content": "List All Tasks"
+                  }
+                },
+                "content": [
+                  {
+                    "element": "httpTransaction",
+                    "content": [
+                      {
+                        "element": "httpRequest",
+                        "attributes": {
+                          "method": {
+                            "element": "string",
+                            "content": "GET"
+                          }
+                        },
+                        "content": []
+                      },
+                      {
+                        "element": "httpResponse",
+                        "attributes": {
+                          "statusCode": {
+                            "element": "string",
+                            "content": "200"
+                          },
+                          "headers": {
+                            "element": "httpHeaders",
+                            "content": [
+                              {
+                                "element": "member",
+                                "content": {
+                                  "key": {
+                                    "element": "string",
+                                    "content": "Content-Type"
+                                  },
+                                  "value": {
+                                    "element": "string",
+                                    "content": "application/json"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "content": [
+                          {
+                            "element": "asset",
+                            "meta": {
+                              "classes": {
+                                "element": "array",
+                                "content": [
+                                  {
+                                    "element": "string",
+                                    "content": "messageBody"
+                                  }
+                                ]
+                              }
+                            },
+                            "attributes": {
+                              "contentType": {
+                                "element": "string",
+                                "content": "application/json"
+                              }
+                            },
+                            "content": "[\n    {\n        \"id\": 123,\n        \"name\": \"Exercise in gym\",\n        \"done\": false,\n        \"type\": \"task\"\n    },\n    {\n        \"id\": 124,\n        \"name\": \"Shop for groceries\",\n        \"done\": true,\n        \"type\": \"task\"\n    }\n]\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "element": "transition",
+                "meta": {
+                  "title": {
+                    "element": "string",
+                    "content": "Retrieve Task"
+                  }
+                },
+                "attributes": {
+                  "href": {
+                    "element": "string",
+                    "content": "/task/{id}"
+                  },
+                  "hrefVariables": {
+                    "element": "hrefVariables",
+                    "content": [
+                      {
+                        "element": "member",
+                        "meta": {
+                          "title": {
+                            "element": "string",
+                            "content": "string"
+                          }
+                        },
+                        "attributes": {
+                          "typeAttributes": {
+                            "element": "array",
+                            "content": [
+                              {
+                                "element": "string",
+                                "content": "required"
+                              }
+                            ]
+                          }
+                        },
+                        "content": {
+                          "key": {
+                            "element": "string",
+                            "content": "id"
+                          },
+                          "value": {
+                            "element": "string"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "content": [
+                  {
+                    "element": "copy",
+                    "content": "This is a state transition to another resource."
+                  },
+                  {
+                    "element": "httpTransaction",
+                    "content": [
+                      {
+                        "element": "httpRequest",
+                        "attributes": {
+                          "method": {
+                            "element": "string",
+                            "content": "GET"
+                          }
+                        },
+                        "content": []
+                      },
+                      {
+                        "element": "httpResponse",
+                        "attributes": {
+                          "statusCode": {
+                            "element": "string",
+                            "content": "200"
+                          },
+                          "headers": {
+                            "element": "httpHeaders",
+                            "content": [
+                              {
+                                "element": "member",
+                                "content": {
+                                  "key": {
+                                    "element": "string",
+                                    "content": "Content-Type"
+                                  },
+                                  "value": {
+                                    "element": "string",
+                                    "content": "application/json"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "content": [
+                          {
+                            "element": "asset",
+                            "meta": {
+                              "classes": {
+                                "element": "array",
+                                "content": [
+                                  {
+                                    "element": "string",
+                                    "content": "messageBody"
+                                  }
+                                ]
+                              }
+                            },
+                            "attributes": {
+                              "contentType": {
+                                "element": "string",
+                                "content": "application/json"
+                              }
+                            },
+                            "content": "{\n    \"id\": {{params.id}},\n    \"name\": \"Go to gym\",\n    \"done\": false,\n    \"type\": \"task\"\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "element": "transition",
+                "meta": {
+                  "title": {
+                    "element": "string",
+                    "content": "Delete Task"
+                  }
+                },
+                "attributes": {
+                  "href": {
+                    "element": "string",
+                    "content": "/task/{id}"
+                  },
+                  "hrefVariables": {
+                    "element": "hrefVariables",
+                    "content": [
+                      {
+                        "element": "member",
+                        "meta": {
+                          "title": {
+                            "element": "string",
+                            "content": "string"
+                          }
+                        },
+                        "attributes": {
+                          "typeAttributes": {
+                            "element": "array",
+                            "content": [
+                              {
+                                "element": "string",
+                                "content": "required"
+                              }
+                            ]
+                          }
+                        },
+                        "content": {
+                          "key": {
+                            "element": "string",
+                            "content": "id"
+                          },
+                          "value": {
+                            "element": "string"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "content": [
+                  {
+                    "element": "httpTransaction",
+                    "content": [
+                      {
+                        "element": "httpRequest",
+                        "attributes": {
+                          "method": {
+                            "element": "string",
+                            "content": "DELETE"
+                          }
+                        },
+                        "content": []
+                      },
+                      {
+                        "element": "httpResponse",
+                        "attributes": {
+                          "statusCode": {
+                            "element": "string",
+                            "content": "204"
+                          }
+                        },
+                        "content": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,13 @@
+{
+  "name": "poser",
+  "private": true,
+  "license": "MIT",
+  "contributors": [
+      "Guilherme Hermeto <gui.hermeto@gmail.com>"
+  ],
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.2",
+    "lerna": "^4.0.0"
+  }
+}
