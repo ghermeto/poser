@@ -29,6 +29,6 @@
     "@apielements/core": "^0.2.1"
   },
   "scripts": {
-    "test": "echo \"Warn: run tests from root\""
+    "test": "mocha '__tests__/**/*.test.js'"
   }
 }
