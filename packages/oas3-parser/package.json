@@ -29,6 +29,6 @@
     "@apielements/core": "^0.2.1"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Warn: run tests from root\""
   }
 }
