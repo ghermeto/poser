@@ -61,7 +61,7 @@ describe('@poser/oas3-parser', () => {
             const rawBody = transaction.response.messageBody?.toValue();
             const responseHeaders = transaction.response.headers?.toValue() ?? [];
             assert.equal(transaction.response.statusCode.toValue(), 200);
-            assert.equal(rawBody, '{"username":"{{fake.name.firstName}}","uuid":""}');
+            assert.equal(rawBody, '{"username":"{{faker.name.firstName}}","uuid":""}');
             assert.equal(responseHeaders[0].key, 'Content-Type');
             assert.equal(responseHeaders[0].value, 'application/json');
         });
@@ -78,7 +78,7 @@ describe('@poser/oas3-parser', () => {
             const rawBody = transaction.response.messageBody?.toValue();
             const responseHeaders = transaction.response.headers?.toValue() ?? [];
             assert.equal(transaction.response.statusCode.toValue(), 200);
-            assert.equal(rawBody, '[{"slug":"","owner":{"username":"{{fake.name.firstName}}","uuid":""}}]');
+            assert.equal(rawBody, '[{"slug":"","owner":{"username":"{{faker.name.firstName}}","uuid":""}}]');
             assert.equal(responseHeaders[0].key, 'Content-Type');
             assert.equal(responseHeaders[0].value, 'application/json');
         });
