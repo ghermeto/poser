@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: poser
+  name: poser
+spec:
+  ports:
+  - name: admin-server
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: mock-server
+    port: 8089
+    protocol: TCP
+    targetPort: 8089
+  selector:
+    app: poser
+  type: ClusterIP

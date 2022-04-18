@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: poser
+  name: poser
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poser
+  template:
+    metadata:
+      labels:
+        app: poser
+    spec:
+      containers:
+      - image: k3d-registry.localhost:5000/poser:test
+        name: poser
