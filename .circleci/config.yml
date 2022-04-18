@@ -8,15 +8,46 @@ jobs:
   say-hello:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
+    machine: true
+    resource_class: ghermeto/k3d
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: "docker version  (debug)"
+          command: "docker --version"
+      - run:
+          name: "Install k3d"
+          command: "curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash"
+      - run:
+          name: "Create cluster"
+          command: "k3d cluster create --config k3d-config.yaml"
+      - run:
+          name: "List the current folder (debug)"
+          command: "pwd"
+      - run:
+          name: "Build the image"
+          command: "docker build -t k3d-registry.localhost:5000/poser:test ."
+      - run:
+          name: "Push to the repo"
+          command: "docker push k3d-registry.localhost:5000/poser:test"
+      - run:
+          name: "Apply k8s manifests"
+          command: "kubectl apply --v=4 --filename manifests"
+      - run:
+          name: "Wait on Pods"
+          command: "kubectl wait pods -l app=poser --for condition=Ready --timeout=60s"
+      - run:
+          name: "List pods (debug)"
+          command: "kubectl get pods -A"
+      - run:
+          name: "Test"
+          command: "kubectl exec svc/poser -- curl -v http://localhost:8089/poser/apis"
+      - run:
+          name: "Delete cluster"
+          command: "k3d cluster delete poser"
+          when: always
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

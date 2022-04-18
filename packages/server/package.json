@@ -34,6 +34,7 @@
     "undici": "^5.0.0"
   },
   "scripts": {
-    "test": "NODE_OPTS=\"--trace-warnings\" mocha '__tests__/**/*.test.js'"
+    "test": "NODE_OPTS=\"--trace-warnings\" mocha '__tests__/**/*.test.js'",
+    "start": "node lib/index.js"
   }
 }
